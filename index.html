@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DiabetsCare - Login</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>DiabetsCare</h1>
+    <p>Seu diário digital de glicemia</p>
+  </header>
+
+  <main class="login-container">
+    <form id="loginForm" onsubmit="goDashboard(event)">
+      <h2>Entrar</h2>
+
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Senha" required>
+
+      <button type="submit">Entrar</button>
+      <p class="cadastro-text">Não tem conta? <a href="#">Cadastre-se</a></p>
+    </form>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 DiabetsCare</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

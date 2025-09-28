@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DiabetsCare - Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>DiabetsCare - Dashboard</h1>
+    <nav>
+      <a href="dashboard.html">Registros</a>
+      <a href="posts.html">Dicas</a>
+      <a href="index.html">Sair</a>
+    </nav>
+  </header>
+
+  <main class="dashboard-container">
+
+    <section>
+      <h2>Registrar Glicemia</h2>
+      <form id="logForm">
+        <input type="date" id="date" required>
+        <input type="number" id="fasting" placeholder="Jejum (mg/dL)" required>
+        <input type="number" id="postMeal" placeholder="Pós-prandial (mg/dL)">
+        <textarea id="notes" placeholder="Observações"></textarea>
+        <button type="submit">Salvar</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Histórico de Glicemias</h2>
+      <table id="logsTable">
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Jejum</th>
+            <th>Pós-prandial</th>
+            <th>Observações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Linhas inseridas via JS -->
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Gráfico de Evolução</h2>
+      <canvas id="chart"></canvas>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 DiabetsCare</p>
+  </footer>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
