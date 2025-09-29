@@ -1,16 +1,15 @@
-DiabetsCare/
+DiabetesCare/
 │
-├── index.html           → Página de login
-├── dashboard.html       → Página principal do usuário
-├── posts.html           → Página de dicas/notícias
+├── index.html           → Tela de Login
+├── cadastro.html        → Tela de Cadastro
+├── dashboard.html       → Dashboard (pós login)
+├── posts.html           → Página de dicas
 │
 ├── css/
 │   └── style.css        → CSS global
 │
 ├── js/
-│   ├── main.js          → JS do login
-│   ├── dashboard.js     → JS interativo do dashboard
-│   └── posts.js         → JS para carregar posts
+│   └── main.js          → Lógica de login/cadastro
 │
 └── data/
-    └── posts.json       → Arquivo com posts de dicas/n
+    └── posts.json       → Posts de dicas

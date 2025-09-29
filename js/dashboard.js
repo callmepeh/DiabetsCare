@@ -1,72 +1,77 @@
-let registros = [];
-const logForm = document.getElementById('logForm');
-const logsTableBody = document.querySelector('#logsTable tbody');
-const chartCtx = document.getElementById('chart').getContext('2d');
+const glucoseForm = document.getElementById("glucoseForm");
+const tableBody = document.getElementById("historyTable");
+const ctx = document.getElementById("glucoseChart").getContext("2d");
 
-let glicemiaChart = new Chart(chartCtx, {
-  type: 'line',
-  data: {
-    labels: [],
-    datasets: [{
-      label: 'Jejum (mg/dL)',
-      data: [],
-      borderColor: '#4a90e2',
-      fill: false,
-      tension: 0.3
-    },
-    {
-      label: 'Pós-prandial (mg/dL)',
-      data: [],
-      borderColor: '#f39c12',
-      fill: false,
-      tension: 0.3
-    }]
-  },
-  options: {
-    responsive: true,
-    plugins: {
-      legend: { position: 'top' },
-      title: { display: true, text: 'Evolução da Glicemia' }
-    },
-    scales: {
-      y: { beginAtZero: false }
-    }
-  }
-});
+let history = JSON.parse(localStorage.getItem("glucoseHistory")) || [];
 
-function atualizarDashboard() {
-  logsTableBody.innerHTML = '';
-  registros.forEach(reg => {
-    const row = document.createElement('tr');
-    row.innerHTML = `
-      <td>${reg.date}</td>
-      <td>${reg.fasting}</td>
-      <td>${reg.postMeal}</td>
-      <td>${reg.notes}</td>
+function renderTable() {
+  tableBody.innerHTML = "";
+  history.forEach((entry) => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${entry.date}</td>
+      <td>${entry.fasting}</td>
+      <td>${entry.postMeal}</td>
+      <td>${entry.note}</td>
     `;
-    logsTableBody.appendChild(row);
+    tableBody.appendChild(tr);
   });
-
-  glicemiaChart.data.labels = registros.map(r => r.date);
-  glicemiaChart.data.datasets[0].data = registros.map(r => r.fasting);
-  glicemiaChart.data.datasets[1].data = registros.map(r => r.postMeal || null);
-  glicemiaChart.update();
 }
 
-logForm.addEventListener('submit', (e) => {
-  e.preventDefault();
+function renderChart() {
+  const labels = history.map((e) => e.date);
+  const fastingData = history.map((e) => e.fasting);
+  const postMealData = history.map((e) => e.postMeal);
 
-  const date = document.getElementById('date').value;
-  const fasting = document.getElementById('fasting').value;
-  const postMeal = document.getElementById('postMeal').value;
-  const notes = document.getElementById('notes').value;
+  new Chart(ctx, {
+    type: "line",
+    data: {
+      labels,
+      datasets: [
+        {
+          label: "Jejum (mg/dL)",
+          data: fastingData,
+          borderColor: "#1a73e8",
+          tension: 0.2,
+          fill: false,
+        },
+        {
+          label: "Pós-prandial (mg/dL)",
+          data: postMealData,
+          borderColor: "#f39c12",
+          tension: 0.2,
+          fill: false,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { position: "bottom" } },
+    },
+  });
+}
 
-  if (!date || !fasting) {
-    alert('Preencha pelo menos data e glicemia em jejum.');
-    return;
-  }
+if (glucoseForm) {
+  glucoseForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const fasting = document.getElementById("fasting").value;
+    const postMeal = document.getElementById("postMeal").value;
+    const note = document.getElementById("note").value;
 
-  registros.push({ date, fasting, postMeal, notes });
-  logForm.reset();
-  atualizarDashboard();
+    const date = new Date().toLocaleDateString("pt-BR");
+    history.push({ date, fasting, postMeal, note });
+    localStorage.setItem("glucoseHistory", JSON.stringify(history));
+
+    glucoseForm.reset();
+    renderTable();
+    renderChart();
+  });
+
+  renderTable();
+  renderChart();
+}
+
+document.getElementById("logoutBtn")?.addEventListener("click", () => {
+  alert("Você saiu da conta!");
+  localStorage.removeItem("currentUser");
 });

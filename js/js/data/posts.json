@@ -1,11 +1,17 @@
 [
   {
-    "titulo": "Dicas de alimentação para diabéticos",
-    "conteudo": "Evite alimentos ricos em açúcar e prefira frutas e verduras.",
-    "autor": "Dr. Fulano",
-    "data": "2025-09-28"
+    "titulo": "Alimentação Saudável",
+    "conteudo": "Mantenha uma dieta equilibrada, rica em fibras e com baixo índice glicêmico.",
+    "autor": "Equipe DiabetesCare"
   },
   {
-    "titulo": "Exercícios que ajudam no controle da glicemia",
-    "conteudo": "Caminhadas diárias e exercícios leves ajudam a controlar a glicose.",
-    "autor": "Nutri
+    "titulo": "Importância do Exercício",
+    "conteudo": "Praticar atividade física regularmente ajuda a controlar os níveis de glicose no sangue.",
+    "autor": "Dr. João Silva"
+  },
+  {
+    "titulo": "Monitoramento Diário",
+    "conteudo": "Registrar diariamente seus níveis de glicemia é essencial para um bom acompanhamento.",
+    "autor": "Enf. Maria Souza"
+  }
+]
