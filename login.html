@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login | DiabetesCare</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css\loginStyle.css" />
 </head>
 <body>
   <div class="container">
@@ -13,15 +13,16 @@
       <h1 class="title">Login</h1>
       <p class="subtitle">Adicione os detalhes da sua conta</p>
 
-      <form id="loginForm">
-        <input type="text" id="username" placeholder="Nome de usuário" required />
-        <input type="password" id="password" placeholder="Senha" required />
+      <form id="registerForm">
+        <input type="text" id="newUsername" placeholder="Nome de usuário" required />
+        <input type="password" id="newPassword" placeholder="Senha" required />
         <button type="submit" class="btn">Login</button>
       </form>
 
       <p class="switch">
         Não tem uma conta?
-        <a href="cadastro.html" class="link-btn">Cadastre-se</a>
+      <button type="button" class="link-btn" onclick="window.location.href='cadastro/cadastro.html'">cadastre-se</button>
+        
       </p>
     </div>
 
@@ -30,7 +31,8 @@
       <h2>Bem-Vindo ao <br><span>DiabetesCare</span></h2>
       <p>Faça login para acessar sua conta ou cadastre-se</p>
       <div class="illustration">
-        <img src="img/illustration.svg" alt="Dashboard gráfico" />
+        <img src="login.img\image.png" alt="Imagem decorativa"  />
+    </div>
       </div>
     </div>
   </div>

@@ -1,0 +1,123 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f3f6fa;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
+/* Lado esquerdo - formulário */
+.cadastro {
+  flex: 1;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+}
+
+.cadastro h1 {
+  font-size: 2rem;
+  color: #222;
+}
+
+.cadastro p {
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.input-group {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  margin-bottom: 5px;
+  color: #333;
+  font-weight: 500;
+}
+
+.input-group input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.tipo-conta {
+  margin: 1.2rem 0;
+  color: #333;
+}
+
+.tipo-conta label {
+  margin-right: 15px;
+}
+
+.btn-cadastrar {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.btn-cadastrar:hover {
+  background-color: #0056b3;
+}
+
+.loginCad {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.btn-login {
+  margin-top: 10px;
+  background-color: transparent;
+  color: #007bff;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 1rem;
+}
+
+/* Lado direito - imagens e texto */
+.welcome {
+  flex: 1;
+  background-color: #007bff;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.welcome h1 span {
+  color: #ffe066;
+}
+
+.welcome img {
+  position: absolute;
+  max-width: 150px;
+}
+
+.vector1 { top: 10%; left: 15%; }
+.vector2 { top: 20%; right: 15%; }
+.vector3 { bottom: 10%; left: 20%; }
+.report { bottom: 5%; right: 10%; width: 120px; }
+.mask1 { top: 0; right: 0; width: 300px; opacity: 0.1; }

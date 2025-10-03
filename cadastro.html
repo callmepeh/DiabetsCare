@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastre-se | DiabetesCare</title>
+  <link rel="stylesheet" href="css\cadastroStyles.css">
+</head>
+
+<body>
+  <div class="container">
+    <!-- Lado esquerdo: formulário -->
+    <div class="cadastro">
+      <h1>Cadastre-se</h1>
+      <p>Adicione os detalhes da sua conta</p>
+
+      <form id="formCadastro">
+        <div class="input-group">
+          <label for="usuario">Nome de Usuário</label>
+          <input type="text" name="usuario" id="usuario" placeholder="Digite seu nome de usuário" required>
+        </div>
+
+        <div class="input-group">
+          <label for="senha">Senha</label>
+          <input type="password" name="senha" id="senha" placeholder="Digite sua senha" required>
+        </div>
+
+        <div class="tipo-conta">
+          <p>Tipo de conta:</p>
+          <label><input type="radio" name="tipoConta" value="comum" required> Comum</label>
+          <label><input type="radio" name="tipoConta" value="profissional"> Profissional</label>
+        </div>
+
+        <button type="submit" class="btn-cadastrar">Cadastre-se</button>
+      </form>
+
+      <div class="loginCad">
+        <p>Já possui uma conta?</p>
+        <button onclick="irParaLogin()" class="btn-login">Login</button>
+      </div>
+    </div>
+
+    <!-- Lado direito: imagem e texto -->
+    <div class="welcome">
+      <div class="textwelcome">
+        <h1>Bem-vindo ao <br> <span>DiabetesCare</span></h1>
+        <p>Faça o login para acessar sua conta ou cadastre-se</p>
+      </div>
+
+      <img class="vector1" src="cadastro\img\Vector1.png" alt="">
+      <img class="vector2" src="cadastro\img\Vector2.png" alt="">
+      <img class="vector3" src="cadastro\img\Vector3.png" alt="">
+      <img class="report" src="cadastro\img\report (1) 2.png" alt="">
+      <img class="mask1" src="cadastro\img\Mask group 1.png" alt="">
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('formCadastro');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const usuario = document.getElementById('usuario').value.trim();
+      const senha = document.getElementById('senha').value.trim();
+      const tipoConta = document.querySelector('input[name="tipoConta"]:checked')?.value;
+
+      if (!usuario || !senha || !tipoConta) {
+        alert("Preencha todos os campos!");
+        return;
+      }
+
+      // Salvar no localStorage (exemplo simples)
+      const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+      usuarios.push({ usuario, senha, tipoConta });
+      localStorage.setItem('usuarios', JSON.stringify(usuarios));
+
+      alert("Cadastro realizado com sucesso!");
+      form.reset();
+    });
+
+    function irParaLogin() {
+      window.location.href = "login.html"; // ajuste o nome se o arquivo for diferente
+    }
+  </script>
+</body>
+</html>

@@ -1,26 +1,58 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dicas | DiabetesCare</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feed - DiabetesCare</title>
+  <link rel="stylesheet" href="css\postsStyles.css">
 </head>
+
 <body>
-  <header class="header">
-    <h1>DiabetesCare</h1>
-    <nav>
-      <a href="dashboard.html">Dashboard</a>
-      <a href="posts.html" class="active">Dicas</a>
-      <a href="index.html">Sair</a>
-    </nav>
-  </header>
+  <div class="container">
 
-  <main class="posts-container">
-    <h2>Dicas e Cuidados</h2>
-    <div id="posts" class="posts-grid"></div>
-  </main>
+    <!-- Lado Esquerdo: Feed -->
+    <div class="feed-content">
+      <header>
+        <h1>Feed de Atualizações</h1>
+        <p>Acompanhe suas postagens e dicas dos profissionais</p>
+      </header>
 
-  <script src="js/posts.js"></script>
+      <div class="post-form">
+        <textarea placeholder="Compartilhe sua experiência, dica ou dúvida..."></textarea>
+        <button>Publicar</button>
+      </div>
+
+      <div class="posts">
+        <div class="post">
+          <h2>@MariaDiabCare</h2>
+          <p>Hoje consegui manter minha glicemia em 98mg/dL! 😍</p>
+          <span>⏰ Há 2h</span>
+        </div>
+
+        <div class="post">
+          <h2>@DrCarlos</h2>
+          <p>Evite pular refeições! Isso ajuda a manter a estabilidade glicêmica.</p>
+          <span>⏰ Há 5h</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lado Direito: Ilustração -->
+    <div class="welcome">
+      <div class="textwelcome">
+        <h1>Bem-vindo ao <span>DiabetesCare</span></h1>
+        <p>Compartilhe, aprenda e evolua com nossa comunidade 💙</p>
+      </div>
+
+      <img class="Vector1" src="cadastro/img/Vector1.png" alt="">
+      <img class="Vector2" src="cadastro/img/Vector2.png" alt="">
+      <img class="Vector3" src="cadastro/img/Vector3.png" alt="">
+      <img class="report" src="cadastro/img/report (1) 2.png" alt="">
+      <img class="mask1" src="cadastro/img/Mask group 1.png" alt="">
+    </div>
+
+  </div>
 </body>
+
 </html>
