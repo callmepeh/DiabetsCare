@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos do corpo da página */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(to bottom, #1a73e8 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+#container-principal{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+#conteudo{
+    width: 900px;
+    height: 500px;
+    padding: 30px 20px 30px 20px;
+    border-radius: 30px 30px 0px 0px;
+    border-style: none;
+    box-shadow: 5px 0px 5px rgba(0, 0, 0, 0.296);
+    border-bottom: 2px solid #007bff;
+    outline: none;
+    font-size: 16px;
+    resize: none;
+}
+
+#conteudo::placeholder{
+    font-size: x-large;
+}
+
+#botoes-post{
+    padding: 30px;
+    background-color: white;
+    border-radius: 0px 0px 30px 30px;
+    border-style: none;
+    box-shadow: 5px 0px 5px rgba(0, 0, 0, 0.296);
+    width: 900px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.botao-post{
+    height: 40px;
+    margin-top: 0px;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.botao-post:hover{
+    opacity: 0.9;
+}
