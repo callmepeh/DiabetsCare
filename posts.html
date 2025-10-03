@@ -1,58 +1,50 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Feed - DiabetesCare</title>
-  <link rel="stylesheet" href="css\postsStyles.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-  <div class="container">
+  <header class="topo">
+    <h1>DiabetesCare</h1>
+    <nav>
+      <a href="../perfil/perfil.html">Meu Perfil</a>
+      <a href="#">Sair</a>
+    </nav>
+  </header>
 
-    <!-- Lado Esquerdo: Feed -->
-    <div class="feed-content">
-      <header>
-        <h1>Feed de Atualizações</h1>
-        <p>Acompanhe suas postagens e dicas dos profissionais</p>
-      </header>
+  <main class="feed">
+    <section class="novo-post">
+      <textarea id="conteudoPost" placeholder="Compartilhe sua experiência..."></textarea>
+      <button id="publicar">Publicar</button>
+    </section>
 
-      <div class="post-form">
-        <textarea placeholder="Compartilhe sua experiência, dica ou dúvida..."></textarea>
-        <button>Publicar</button>
-      </div>
+    <section class="posts">
+      <!-- Os posts aparecerão aqui -->
+    </section>
+  </main>
 
-      <div class="posts">
-        <div class="post">
-          <h2>@MariaDiabCare</h2>
-          <p>Hoje consegui manter minha glicemia em 98mg/dL! 😍</p>
-          <span>⏰ Há 2h</span>
+  <script>
+    const btnPublicar = document.getElementById('publicar');
+    const conteudo = document.getElementById('conteudoPost');
+    const postsSection = document.querySelector('.posts');
+
+    btnPublicar.addEventListener('click', () => {
+      if (conteudo.value.trim() === "") return;
+      const post = document.createElement('div');
+      post.classList.add('post');
+      post.innerHTML = `
+        <div class="post-header">
+          <strong>@usuario</strong>
+          <span>${new Date().toLocaleString()}</span>
         </div>
-
-        <div class="post">
-          <h2>@DrCarlos</h2>
-          <p>Evite pular refeições! Isso ajuda a manter a estabilidade glicêmica.</p>
-          <span>⏰ Há 5h</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Lado Direito: Ilustração -->
-    <div class="welcome">
-      <div class="textwelcome">
-        <h1>Bem-vindo ao <span>DiabetesCare</span></h1>
-        <p>Compartilhe, aprenda e evolua com nossa comunidade 💙</p>
-      </div>
-
-      <img class="Vector1" src="cadastro/img/Vector1.png" alt="">
-      <img class="Vector2" src="cadastro/img/Vector2.png" alt="">
-      <img class="Vector3" src="cadastro/img/Vector3.png" alt="">
-      <img class="report" src="cadastro/img/report (1) 2.png" alt="">
-      <img class="mask1" src="cadastro/img/Mask group 1.png" alt="">
-    </div>
-
-  </div>
+        <p>${conteudo.value}</p>
+      `;
+      postsSection.prepend(post);
+      conteudo.value = "";
+    });
+  </script>
 </body>
-
 </html>
