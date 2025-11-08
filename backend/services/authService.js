@@ -23,8 +23,6 @@ export class ErroAutenticacao extends Error {
 }
 
 /**
- * Remove informações sensíveis do objeto de usuário antes de enviar para o cliente.
- * Remove especificamente a senha do objeto para evitar vazamento de dados.
  * @param {Object} usuario - Objeto do usuário completo (incluindo senha)
  * @returns {Object|null} Objeto do usuário sem a senha ou null se usuário não fornecido
  */
