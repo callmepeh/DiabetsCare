@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | DiabetesCare</title>
+  <link rel="stylesheet" href="css/loginStyle.css" />
+</head>
+<body>
+  <div class="container">
+    <!-- Lado Esquerdo -->
+    <div class="form-section">
+      <h1 class="title">Login</h1>
+      <p class="subtitle">Adicione os detalhes da sua conta</p>
+
+      <form id="loginForm">
+        <input type="email" id="email" placeholder="E-mail" required />
+        <input type="password" id="password" placeholder="Senha" required />
+        <button type="submit" class="btn">Entrar</button>
+      </form>
+
+      <p class="switch">
+        Não tem uma conta?
+        <button type="button" class="link-btn" onclick="window.location.href='cadastro.html'">Cadastre-se</button>
+      </p>
+    </div>
+
+    <!-- Lado Direito -->
+    <div class="welcome-section">
+      <h2>Bem-vindo ao <br><span>DiabetesCare</span></h2>
+      <p>Faça login para acessar sua conta ou cadastre-se</p>
+      <div class="illustration">
+        <img src="img/image.png" alt="Imagem decorativa" />
+      </div>
+    </div>
+  </div>
+
+  <script src="js/auth/login.js"></script>
+</body>
+</html>

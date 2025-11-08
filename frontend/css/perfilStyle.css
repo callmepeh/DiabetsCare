@@ -1,0 +1,190 @@
+/* Reset e configurações básicas */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Cabeçalho azul */
+.header {
+    background: linear-gradient(135deg, #4285f4 0%, #1a73e8 100%);
+    height: 240px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Formas decorativas */
+.decorative-shapes {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.shape {
+    position: absolute;
+    border-radius: 50% 30% 70% 40%;
+}
+
+.shape-1 {
+    width: 300px;
+    height: 300px;
+    background: rgb(84, 178, 255);
+    top: -50px;
+    right: -50px;
+    transform: rotate(45deg);
+}
+
+.shape-2 {
+    width: 200px;
+    height: 200px;
+    background: rgba(174, 219, 255, 0.8);
+    top: 80px;
+    right: 150px;
+    border: 2px solid #1a73e8;
+    transform: rotate(-30deg);
+}
+
+/* Conteúdo principal */
+.main-content {
+    padding: 0 70px;
+    position: relative;
+    z-index: 10;
+    margin-top: -40px;
+}
+
+/* Nome do usuário */
+.user-name {
+    font-size: 48px;
+    font-weight: 700;
+    color: #4285f4;
+    margin-bottom: 40px;
+    margin-top: 80px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Seção de bio */
+.bio-section {
+    margin-bottom: 60px;
+}
+
+.bio-textarea {
+    width: 100%;
+    max-width: 650px;
+    height: 200px;
+    background-color: #e0e0e0;
+    border: none;
+    border-radius: 20px;
+    padding: 20px;
+    font-size: 16px;
+    color: #666;
+    resize: none;
+    outline: none;
+    font-family: inherit;
+}
+
+.bio-textarea::placeholder {
+    color: #999;
+}
+
+/* Seção de currículo (tela 2) */
+.curriculum-section {
+    margin-bottom: 40px;
+}
+
+.curriculum-textarea {
+    width: 100%;
+    max-width: 750px;
+    height: 400px;
+    background-color: #e0e0e0;
+    border: none;
+    border-radius: 20px;
+    padding: 20px;
+    font-size: 16px;
+    color: #666;
+    resize: none;
+    outline: none;
+    font-family: inherit;
+}
+
+.curriculum-textarea::placeholder {
+    color: #999;
+}
+
+/* Seção de estatísticas */
+.stats-section {
+    display: flex;
+    justify-content: space-between;
+    max-width: 650px;
+    margin-bottom: 60px;
+    gap: 40px;
+}
+
+.stat-item {
+    text-align: center;
+    flex: 1;
+}
+
+.stat-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #4285f4;
+    margin-bottom: 20px;
+}
+
+.stat-value {
+    font-size: 72px;
+    font-weight: 800;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.stat-yellow {
+    color: #ffa726;
+}
+
+.stat-green {
+    color: #66bb6a;
+}
+
+.stat-red {
+    color: #ef5350;
+}
+
+/* Botão principal */
+.primary-button {
+    background: linear-gradient(135deg, #4285f4 0%, #1a73e8 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 18px 40px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3);
+    text-transform: none;
+}
+
+.primary-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(66, 133, 244, 0.4);
+    background: linear-gradient(135deg, #1a73e8 0%, #1557b0 100%);
+}
+
+.primary-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(66, 133, 244, 0.3);
+}

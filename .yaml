@@ -1,0 +1,18 @@
+
+---
+
+## Como rodar o sistema
+
+1. Abrir `index.html` diretamente no navegador **OU** usar um servidor local:
+   - VS Code: clique em `Open with Live Server`
+   - Python: `python -m http.server 8000`
+2. Abrir no navegador: `http://localhost:8000/index.html`
+3. Testar login → dashboard → adicionar glicemias → ver gráfico → acessar posts
+
+---
+
+## Próximos passos / melhorias
+- Armazenamento dos registros no `localStorage`
+- Alertas para glicemia crítica
+- Login com autenticação real
+- Backend para salvar dados no banco de dados

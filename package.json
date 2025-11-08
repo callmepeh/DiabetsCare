@@ -1,0 +1,32 @@
+{
+  "name": "diabetscare",
+  "version": "1.0.0",
+  "description": "Esse repositório contém o código da aplicação web \"DiabetsCare\" um site pensado para ajudar pessoas com diabetes a terem um suporte e uma ajuda democratizada.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/callmepeh/DiabetsCare.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/callmepeh/DiabetsCare/issues"
+  },
+  "homepage": "https://github.com/callmepeh/DiabetsCare#readme",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}

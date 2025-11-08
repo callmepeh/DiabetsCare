@@ -1,0 +1,163 @@
+/* Reset e estilo base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.recipiente-principal {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 60px;
+}
+
+.forma-fundo, .forma-fundo2 {
+  position: absolute;
+  border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+  z-index: 0;
+}
+
+.forma-fundo {
+  top: -100px;
+  right: -200px;
+  width: 600px;
+  height: 600px;
+  background-color: #1577ff;
+}
+
+.forma-fundo2 {
+  top: -80px;
+  right: -10px;
+  width: 400px;
+  height: 400px;
+  background-color: #4a96ff;
+}
+
+.dashboard-container {
+  position: relative;
+  z-index: 1;
+  background: #fff;
+  padding: 40px 60px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+  max-width: 1000px;
+  width: 100%;
+}
+
+/* Cabeçalho */
+.cabecalho-dashboard {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.cabecalho-dashboard h1 {
+  color: #4285f4;
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+}
+
+.cabecalho-dashboard p {
+  color: #6c757d;
+  font-size: 1.2rem;
+}
+
+/* Relatório */
+.relatorio-container {
+  margin-bottom: 40px;
+}
+
+.relatorio-container h2 {
+  color: #4285f4;
+  margin-bottom: 20px;
+}
+
+.cards-medias {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card-media {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 20px 30px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  flex: 1;
+  min-width: 180px;
+}
+
+.card-media h3 {
+  color: #1976d2;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.card-media p {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #333;
+}
+
+/* Gráfico */
+.grafico-container {
+  margin-bottom: 50px;
+}
+
+.grafico-container h2 {
+  color: #4285f4;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#graficoGlicemia {
+  width: 100%;
+  height: 400px;
+}
+
+/* Botões */
+.acoes-dashboard {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.botao-voltar, .botao-novo {
+  padding: 14px 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.botao-voltar {
+  background: #ccc;
+  color: #333;
+}
+
+.botao-voltar:hover {
+  background: #b3b3b3;
+}
+
+.botao-novo {
+  background: linear-gradient(135deg, #4285f4 0%, #1976d2 100%);
+  color: #fff;
+}
+
+.botao-novo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(66, 133, 244, 0.3);
+}

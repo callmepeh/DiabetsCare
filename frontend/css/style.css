@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #f8faff;
+  color: #333;
+}
+
+/* Header */
+.header {
+  background: #1A73E8;
+  color: white;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header nav a {
+  color: white;
+  margin-left: 20px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.3s;
+}
+
+.header nav a:hover, .header nav a.active {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+/* Banner */
+.banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px 80px;
+  background: linear-gradient(135deg, #0C356A 0%, #279EFF 100%);
+  color: white;
+}
+
+.banner-text h1 {
+  font-size: 2.5rem;
+  line-height: 1.2;
+}
+
+.banner-text span {
+  font-weight: 700;
+}
+
+.banner-text p {
+  margin: 20px 0;
+  font-size: 1.2rem;
+}
+
+.btn-banner {
+  background: #fff;
+  color: #0C356A;
+  padding: 12px 30px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.btn-banner:hover {
+  background: #e0e0e0;
+}
+
+.banner-img img {
+  width: 400px;
+  max-width: 100%;
+}
+
+/* Seção de artigos */
+.articles {
+  padding: 60px 80px;
+}
+
+.articles h2 {
+  font-size: 2rem;
+  color: #0C356A;
+  margin-bottom: 30px;
+}
+
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.article-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.article-card:hover {
+  transform: translateY(-5px);
+}
+
+.article-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.article-content {
+  padding: 20px;
+}
+
+.article-content h3 {
+  color: #1A73E8;
+  margin-bottom: 10px;
+}
+
+.article-content p {
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+
+.article-content span {
+  font-size: 0.85rem;
+  color: #777;
+}
+
+/* Footer */
+.footer {
+  background: #0C356A;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+  .banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  .banner-img {
+    margin-top: 20px;
+  }
+
+  .articles {
+    padding: 40px 20px;
+  }
+}
+
+

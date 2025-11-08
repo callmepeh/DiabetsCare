@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - DiabetesCare</title>
+  <link rel="stylesheet" href="css\dashboardStyle.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <main class="recipiente-principal">
+    <!-- Formas decorativas -->
+    <div class="forma-fundo"></div>
+    <div class="forma-fundo2"></div>
+
+    <!-- Conteúdo principal -->
+    <section class="dashboard-container">
+      <!-- Cabeçalho -->
+      <header class="cabecalho-dashboard">
+        <h1>Seu Dashboard</h1>
+        <p>Acompanhe sua evolução diária da glicemia</p>
+      </header>
+
+      <!-- Relatório de médias -->
+      <section class="relatorio-container">
+        <h2>Relatório de Médias</h2>
+        <div class="cards-medias">
+          <div class="card-media">
+            <h3>Jejum</h3>
+            <p id="media-jejum">--</p>
+          </div>
+          <div class="card-media">
+            <h3>Pós-prandial</h3>
+            <p id="media-pos">--</p>
+          </div>
+          <div class="card-media">
+            <h3>Antes de dormir</h3>
+            <p id="media-dormir">--</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Gráfico -->
+      <section class="grafico-container">
+        <h2>Gráfico de Evolução</h2>
+        <canvas id="graficoGlicemia"></canvas>
+      </section>
+
+      <!-- Botões -->
+      <div class="acoes-dashboard">
+        <button class="botao-voltar" onclick="window.location.href='frontend/index.html'">
+          Voltar
+        </button>
+        <button class="botao-novo" onclick="window.location.href='frontend/glicemia.html'">
+          Novo Registro
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/dashboar/dashboard.js"></script>
+</body>
+</html>

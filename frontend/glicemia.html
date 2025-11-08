@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glicemia | DiabetsCare</title>
+    <link rel="stylesheet" href="css/glicemia.css">
+</head>
+<body>
+    <!-- Container principal da página -->
+    <main class="recipiente-principal">
+        <!-- Forma decorativa de fundo -->
+        <div class="forma-fundo"></div>
+        <div class="forma-fundo2"></div>
+        
+        <!-- Container do formulário -->
+        <div class="recipiente-formulario">
+            <!-- Cabeçalho da página -->
+            <header class="cabecalho">
+                <h1>Registre sua glicemia</h1>
+                <p>Insira seus dados de hoje</p>
+            </header>
+
+            <!-- Formulário de registro de glicemia -->
+            <form class="formulario-glicemia">
+                <!-- Grupo de entrada: Glicemia em jejum -->
+                <div class="grupo-entrada">
+                    <label for="glicemia-jejum">Glicemia em jejum (mg/dL)</label>
+                    <div class="recipiente-controle-deslizante">
+                        <input type="range" id="glicemia-jejum" name="glicemia-jejum" min="50" max="200" value="65" class="controle-deslizante">
+                        <div class="valor-controle">65</div>
+                    </div>
+                    <div class="indicador-status status-baixa">Baixa</div>
+                </div>
+
+                <!-- Grupo de entrada: Glicemia pós-prandial -->
+                <div class="grupo-entrada">
+                    <label for="glicemia-pos-prandial">Glicemia pós-prandial (após refeição)</label>
+                    <div class="recipiente-controle-deslizante">
+                        <input type="range" id="glicemia-pos-prandial" name="glicemia-pos-prandial" min="50" max="250" value="90" class="controle-deslizante">
+                        <div class="valor-controle">90</div>
+                    </div>
+                    <div class="indicador-status status-normal">Normal</div>
+                </div>
+
+                <!-- Grupo de entrada: Glicemia antes de dormir -->
+                <div class="grupo-entrada">
+                    <label for="glicemia-antes-dormir">Glicemia antes de dormir</label>
+                    <div class="recipiente-controle-deslizante">
+                        <input type="range" id="glicemia-antes-dormir" name="glicemia-antes-dormir" min="50" max="250" value="145" class="controle-deslizante">
+                        <div class="valor-controle">145</div>
+                    </div>
+                    <div class="indicador-status status-alta">Alta</div>
+                </div>
+
+                <!-- Grupo de entrada: Campo de observações -->
+                <div class="grupo-entrada">
+                    <label for="campo-observacoes">Como você está?</label>
+                    <textarea id="campo-observacoes" name="campo-observacoes" placeholder="Escreva aqui..."></textarea>
+                </div>
+
+                <!-- Botão de envio -->
+                <input type="submit" value="Salvar" class="botao-enviar">
+            </form>
+        </div>
+    </main>
+
+    <!-- Script JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
