@@ -1,33 +1,227 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil profissional | DiabetsCare</title>
-    <link rel="stylesheet" href="css/perfilStyle.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Perfil Profissional | DiabetesCare</title>
+
+  <style>
+    :root{
+      --brand:#4c8bf5;
+      --muted:#6b7280;
+      --bg:#f4f7fb;
+      --card:#ffffff;
+    }
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      background:var(--bg);
+      font-family:"Segoe UI",sans-serif;
+    }
+
+    /* Header */
+    .header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      background:var(--brand);
+      padding:14px 26px;
+      color:white;
+      box-shadow:0 3px 12px rgba(0,0,0,0.12);
+    }
+    nav a{
+      color:white;
+      margin-left:18px;
+      text-decoration:none;
+      font-weight:600;
+    }
+    nav a.btn-login{
+      background:white;
+      color:var(--brand);
+      padding:6px 12px;
+      border-radius:8px;
+    }
+    .header-logo{
+      width:48px;
+      border-radius:8px;
+      background:white;
+      padding:4px;
+    }
+
+    /* Layout */
+    .page{
+      max-width:1200px;
+      margin:28px auto;
+      padding:0 18px;
+      display:grid;
+      grid-template-columns:340px 1fr;
+      gap:28px;
+    }
+
+    /* Coluna Esquerda: Perfil */
+    .profile-card{
+      background:var(--card);
+      padding:22px;
+      border-radius:14px;
+      box-shadow:0 8px 20px rgba(12,20,40,0.06);
+    }
+
+    .avatar{
+      width:100px;height:100px;
+      border-radius:16px;
+      background:#eee;
+      object-fit:cover;
+      border:4px solid #fff;
+      box-shadow:0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .name{
+      font-size:22px;
+      font-weight:700;
+      margin:10px 0 0 0;
+    }
+
+    .specialty{
+      font-size:15px;
+      color:var(--muted);
+      margin-top:4px;
+    }
+
+    .bio{
+      margin-top:14px;
+      font-size:14px;
+      color:#333;
+      line-height:1.4;
+    }
+
+    .info-line{
+      margin-top:10px;
+      font-size:14px;
+      color:#333;
+      padding:8px;
+      background:#f8fbff;
+      border-radius:10px;
+      border:1px solid #eef3ff;
+    }
+
+    .btn{
+      padding:10px 14px;
+      border-radius:10px;
+      border:none;
+      cursor:pointer;
+      font-weight:700;
+    }
+    .btn-primary{
+      background:var(--brand);
+      color:white;
+      margin-top:16px;
+      width:100%;
+    }
+    .btn-secondary{
+      background:#eef3ff;
+      color:var(--brand);
+      width:100%;
+      margin-top:10px;
+    }
+
+    /* Coluna Direita */
+    .section-card{
+      background:white;
+      padding:20px;
+      border-radius:14px;
+      box-shadow:0 6px 18px rgba(12,20,40,0.06);
+      margin-bottom:20px;
+    }
+    .section-card h3{
+      margin:0 0 14px 0;
+    }
+
+    .item{
+      padding:12px;
+      border-radius:10px;
+      border:1px solid #eef3ff;
+      margin-bottom:10px;
+      display:flex;
+      justify-content:space-between;
+    }
+
+    .muted{color:var(--muted);font-size:13px;}
+
+  </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Cabeçalho azul com formas decorativas -->
-        <header class="header">
-            <div class="decorative-shapes">
-                <div class="shape shape-1"></div>
-                <div class="shape shape-2"></div>
-            </div>
-        </header>
 
-        <!-- Conteúdo principal -->
-        <main class="main-content">
-            <h1 class="user-name">Nome do usuário</h1>
-            
-            <!-- Área de currículo -->
-            <div class="curriculum-section">
-                <textarea class="curriculum-textarea" placeholder="Currículo"></textarea>
-            </div>
-
-            <!-- Botão de ação -->
-            <button class="primary-button">Postar</button>
-        </main>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-left">
+      <img src="img/logoDiabetesCare.png" class="header-logo">
+      <span style="font-size:24px;font-weight:700;">DiabetesCare</span>
     </div>
+
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="feed.html">Artigos</a>
+      <a href="perfil_profissional.html" style="text-decoration:underline">Profissional</a>
+      <a href="login.html" class="btn-login">Login</a>
+    </nav>
+  </header>
+
+  <div class="page">
+
+    <!-- ESQUERDA -->
+    <aside class="profile-card">
+      <div style="text-align:center">
+        <img id="avatar" src="images/prof_default.png" class="avatar">
+        <div class="name" id="name">Nome do Profissional</div>
+        <div class="specialty" id="specialty">Especialidade</div>
+      </div>
+
+      <div class="info-line" id="crm">CRM/COREN: —</div>
+      <div class="info-line" id="experience">Experiência: — anos</div>
+
+      <div class="bio" id="bio">
+        Sem descrição profissional cadastrada.
+      </div>
+
+      <button class="btn btn-primary" onclick="window.location='perfil_profissional_edit.html'">Editar Perfil</button>
+      <button class="btn btn-secondary" onclick="window.location='novo_artigo.html'">Criar Artigo</button>
+    </aside>
+
+    <!-- DIREITA -->
+    <main>
+
+      <div class="section-card">
+        <h3>Últimos Artigos</h3>
+        <div id="listArticles">
+          <div class="muted">Nenhum artigo publicado ainda.</div>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <h3>Perguntas de Pacientes</h3>
+        <div id="questionsList">
+          <div class="muted">Nenhuma pergunta pendente.</div>
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("currentProfessional") || "null");
+
+  const el = (id) => document.getElementById(id);
+
+  if(user){
+    el("name").textContent = user.name;
+    el("specialty").textContent = user.specialty;
+    el("crm").textContent = "CRM/COREN: " + (user.crm || "—");
+    el("experience").textContent = "Experiência: " + (user.experience || "—") + " anos";
+    el("bio").textContent = user.bio || "Sem descrição cadastrada.";
+    el("avatar").src = user.avatar || "images/prof_default.png";
+  }
+</script>
+
 </body>
 </html>

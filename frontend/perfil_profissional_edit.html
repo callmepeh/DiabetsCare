@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Editar Perfil Profissional | DiabetesCare</title>
+
+<style>
+  :root{--brand:#4c8bf5;--bg:#f4f7fb;--card:#fff;--muted:#6b7280;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);font-family:"Segoe UI",sans-serif;}
+  
+  .header{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 26px;background:var(--brand);color:white;
+  }
+  nav a{color:white;text-decoration:none;margin-left:18px;font-weight:600}
+  .header-logo{width:48px;background:white;border-radius:8px;padding:4px}
+
+  .center{max-width:900px;margin:28px auto;padding:16px;}
+  .card{background:var(--card);padding:22px;border-radius:14px;box-shadow:0 8px 20px rgba(12,20,40,0.06)}
+
+  label{display:block;margin-bottom:4px;font-size:14px;font-weight:600;color:var(--muted);}
+  input,textarea,select{
+    width:100%;padding:10px;border-radius:10px;
+    border:1px solid #e6eefb;background:#fafeff;font-size:14px;
+  }
+
+  .avatar-preview{width:160px;height:160px;border-radius:14px;object-fit:cover;border:4px solid #fff;box-shadow:0 6px 16px rgba(12,20,40,0.08)}
+
+  .actions{display:flex;justify-content:flex-end;gap:10px;margin-top:16px}
+  .btn{padding:10px 14px;border-radius:10px;border:none;cursor:pointer;font-weight:700}
+  .btn-primary{background:var(--brand);color:white}
+  .btn-secondary{background:#eef3ff;color:var(--brand)}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-left" style="display:flex;align-items:center;gap:14px">
+    <img class="header-logo" src="img/logoDiabetesCare.png">
+    <span style="font-size:24px;font-weight:700">DiabetesCare</span>
+  </div>
+  <nav>
+    <a href="index.html">Início</a>
+    <a href="feed.html">Artigos</a>
+    <a href="perfil_profissional.html">Profissional</a>
+  </nav>
+</header>
+
+<div class="center">
+  <div class="card">
+
+    <h2 style="margin-top:0">Editar Perfil Profissional</h2>
+
+    <div style="text-align:center;margin:16px 0">
+      <img id="avatarPreview" class="avatar-preview" src="images/prof_default.png">
+      <div><input id="avatarFile" type="file" accept="image/*"></div>
+    </div>
+
+    <label>Nome completo</label>
+    <input id="name" type="text">
+
+    <label>Especialidade</label>
+    <input id="specialty" type="text" placeholder="Ex: Endocrinologista">
+
+    <label>CRM / CRN / COREN </label>
+    <input id="crm" type="text">
+
+    <label>Anos de experiência</label>
+    <input id="experience" type="number" min="0">
+
+    <label>Bio profissional</label>
+    <textarea id="bio" rows="5"></textarea>
+
+    <div class="actions">
+      <button class="btn btn-secondary" onclick="window.location='perfil_profissional.html'">Cancelar</button>
+      <button class="btn btn-primary" id="saveBtn">Salvar</button>
+    </div>
+
+  </div>
+</div>
+
+
+<script>
+  const user = JSON.parse(localStorage.getItem("currentProfessional") || "null");
+  const $ = (id) => document.getElementById(id);
+
+  if(user){
+    $("name").value = user.name || "";
+    $("specialty").value = user.specialty || "";
+    $("crm").value = user.crm || "";
+    $("experience").value = user.experience || "";
+    $("bio").value = user.bio || "";
+    $("avatarPreview").src = user.avatar || "images/prof_default.png";
+  }
+
+  $("avatarFile").addEventListener("change", (ev)=>{
+    const file = ev.target.files[0];
+    if(!file) return;
+    const reader = new FileReader();
+    reader.onload = (e)=> $("avatarPreview").src = e.target.result;
+    reader.readAsDataURL(file);
+  });
+
+  $("saveBtn").addEventListener("click", () => {
+    const updated = {
+      ...user,
+      name: $("name").value,
+      specialty: $("specialty").value,
+      crm: $("crm").value,
+      experience: $("experience").value,
+      bio: $("bio").value,
+      avatar: $("avatarPreview").src
+    };
+
+    localStorage.setItem("currentProfessional", JSON.stringify(updated));
+
+    alert("Perfil profissional atualizado!");
+    window.location = "perfil_profissional.html";
+  });
+</script>
+
+</body>
+</html>

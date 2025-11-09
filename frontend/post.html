@@ -1,21 +1,181 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post | DiabetsCare</title>
-    <link rel="stylesheet" href="css/post.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Novo Post | DiabetesCare</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #333;
+    }
+
+    header {
+      background: #4c8bf5;
+      padding: 20px;
+      color: white;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    header nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 15px;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 0;
+    }
+
+    #post-title {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      font-size: 18px;
+      border: 2px solid #d6d6d6;
+      border-radius: 10px;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      background: #eef2f7;
+      padding: 10px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+    }
+
+    .toolbar button {
+      padding: 8px 10px;
+      border: none;
+      background: white;
+      border-radius: 6px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+    }
+
+    .toolbar button:hover {
+      background: #e6e6e6;
+    }
+
+    #editor {
+      min-height: 200px;
+      border: 2px solid #d6d6d6;
+      border-radius: 12px;
+      padding: 15px;
+      background: white;
+    }
+
+    #post-btn {
+      margin-top: 20px;
+      width: 100%;
+      padding: 14px;
+      background: #4c8bf5;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #post-btn:hover {
+      background: #3b73ca;
+    }
+
+  </style>
 </head>
 <body>
-    <main id="container-principal">
-        <form id="post">
-            <textarea id="conteudo" name="conteudo-post" id="conteudo-post" rows="10" cols="50" placeholder="No que está pensando?"></textarea>
-            <br>
-            <div id="botoes-post">
-                <input style="background-color: #e74c3c;" class="botao-post" type="button" value="Cancelar" onclick="">
-                <input style="background-color: #2ecc71;" class="botao-post" type="submit" value="Salvar">
-            </div>
-        </form>
-    </main>
+
+  <header class="header" style="display:flex; align-items:center; justify-content:space-between; padding:15px 25px; background:#4c8bf5; box-shadow:0 3px 8px rgba(0,0,0,0.15);">
+    <div class="header-left" style="display:flex; align-items:center; gap:12px;">
+      <img src="img/logoDiabetesCare.png" alt="Logo DiabetesCare" class="header-logo" style="width:48px; height:auto;">
+      <h1 class="header-title" style="font-size:32px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700; margin:0;">DiabetesCare</h1>
+    </div>
+
+    <nav style="display:flex; gap:18px;">
+      <a href="index.html" style="color:white; font-weight:600; text-decoration:none;">Início</a>
+      <a href="feed.html" class="active" style="color:white; font-weight:600; text-decoration:none; border-bottom:2px solid white; padding-bottom:2px;">Artigos</a>
+      <a href="#" style="color:white; font-weight:600; text-decoration:none;">Perfil</a>
+      <a href="#" style="color:white; font-weight:600; text-decoration:none;">Contato</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Criar Novo Post</h2>
+
+    <input id="post-title" type="text" placeholder="Título do post" />
+
+    <div class="toolbar">
+      <button onclick="execCmd('bold')"><b>B</b></button>
+      <button onclick="execCmd('italic')"><i>I</i></button>
+      <button onclick="execCmd('underline')"><u>U</u></button>
+      <button onclick="execCmd('insertunorderedlist')">• Lista</button>
+      <button onclick="execCmd('insertorderedlist')">1. Lista</button>
+      <button onclick="execCmd('justifyLeft')">⯇</button>
+      <button onclick="execCmd('justifyCenter')">≡</button>
+      <button onclick="execCmd('justifyRight')">⯈</button>
+      <button onclick="execCmd('formatBlock','h2')">H2</button>
+      <button onclick="execCmd('formatBlock','h3')">H3</button>
+    </div>
+
+    <div id="editor" contenteditable="true"></div>
+
+    <button id="post-btn">Publicar</button>
+  </div>
+
+  <script>
+    function execCmd(command, value = null) {
+      document.execCommand(command, false, value);
+    }
+
+    document.getElementById("post-btn").addEventListener("click", () => {
+      const title = document.getElementById("post-title").value.trim();
+      const content = document.getElementById("editor").innerHTML.trim();
+
+      if (!title) return alert("Dê um título ao seu post!");
+      if (!content) return alert("O conteúdo está vazio!");
+
+      const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      if (!currentUser) return alert("Nenhum usuário logado!");
+
+      const newPost = {
+        id: Date.now(),
+        title,
+        content,
+        authorId: currentUser.id || currentUser._id,
+        createdAt: new Date().toISOString()
+      };
+
+      const posts = JSON.parse(localStorage.getItem("posts") || "[]");
+      posts.unshift(newPost);
+      localStorage.setItem("posts", JSON.stringify(posts));
+
+      alert("Post publicado com sucesso!");
+      window.location.href = "feed.html";
+    });
+  </script>
+
 </body>
 </html>
