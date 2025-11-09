@@ -1,27 +1,41 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const btn = document.getElementById("post-btn");
-  const textarea = document.getElementById("post-content");
+// post.js
 
-  btn.addEventListener("click", () => {
-    const text = textarea.value.trim();
-    if (!text) return alert("Escreva algo antes de publicar!");
+// Carrega usuário logado
+const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado")) || null;
+if (!usuarioLogado) {
+    alert("Você precisa estar logado para criar um post.");
+    window.location.href = "login.html";
+}
 
-    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    if (!currentUser) return alert("Nenhum usuário logado!");
+// Referências dos elementos
+const tituloInput = document.getElementById("titulo-post");
+const editorInput = document.getElementById("conteudo-post");
+const btnPublicar = document.getElementById("btn-publicar");
 
-    const newPost = {
-      id: Date.now(),
-      content: text,
-      authorId: currentUser.id || currentUser._id,
-      createdAt: new Date().toISOString()
+// Evento de publicação
+btnPublicar.addEventListener("click", function () {
+    const titulo = tituloInput.value.trim();
+    const conteudo = editorInput.innerHTML.trim();
+
+    if (titulo === "" || conteudo === "") {
+        alert("Por favor, escreva um título e um conteúdo para o post.");
+        return;
+    }
+
+    const novoPost = {
+        id: Date.now(),
+        autorId: usuarioLogado.id,
+        autorNome: usuarioLogado.nome,
+        titulo: titulo,
+        conteudo: conteudo,
+        timestamp: new Date().toISOString()
     };
 
-    const posts = JSON.parse(localStorage.getItem("posts") || "[]");
-    posts.unshift(newPost);
-
+    // Salvar no localStorage
+    let posts = JSON.parse(localStorage.getItem("posts")) || [];
+    posts.push(novoPost);
     localStorage.setItem("posts", JSON.stringify(posts));
 
-    alert("Post publicado!");
+    alert("Post publicado com sucesso!");
     window.location.href = "feed.html";
-  });
 });
