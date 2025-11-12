@@ -10,65 +10,89 @@
  * 
  * Este script é carregado em todas as páginas que precisam de verificação
  * de autenticação e funcionalidade de logout.
+ * 
+ * IMPORTANTE: storage.js deve ser carregado ANTES deste script no HTML
  */
 
 /**
- * Verifica se o usuário está autenticado verificando o token no localStorage.
- * 
- * @returns {boolean} True se o usuário estiver autenticado, False caso contrário
+ * Lista de páginas que NÃO requerem autenticação
  */
-const estaAutenticado = () => {
-  const token = localStorage.getItem("dc_token");
-  return token !== null && token !== "";
+const PAGINAS_PUBLICAS = [
+  'login.html',
+  'cadastro.html',
+  'index.html'
+];
+
+/**
+ * Verifica se a página atual requer autenticação
+ * @returns {boolean} True se a página requer autenticação
+ */
+const paginaRequerAutenticacao = () => {
+  const paginaAtual = window.location.pathname.split('/').pop() || 'index.html';
+  return !PAGINAS_PUBLICAS.includes(paginaAtual);
 };
 
 /**
- * Realiza o logout do usuário, removendo os dados de autenticação.
+ * Protege rotas - redireciona para login se não estiver autenticado
+ * Esta função é executada IMEDIATAMENTE, antes do DOMContentLoaded
+ * para garantir proteção mesmo se a página carregar parcialmente
+ */
+const protegerRotas = () => {
+  // Verifica se o AuthService está disponível (storage.js foi carregado)
+  if (typeof AuthService === 'undefined') {
+    // Se não estiver disponível ainda, tenta novamente após um pequeno delay
+    setTimeout(protegerRotas, 50);
+    return;
+  }
+
+  if (paginaRequerAutenticacao()) {
+    if (!AuthService.estaLogado()) {
+      alert("Você precisa estar logado para acessar esta página.");
+      window.location.href = "login.html";
+      return false;
+    }
+  }
+  return true;
+};
+
+// Executa proteção IMEDIATAMENTE (antes do DOM carregar)
+protegerRotas();
+
+/**
+ * Realiza o logout do usuário
  */
 const fazerLogout = () => {
-  // Remove o token JWT
-  localStorage.removeItem("dc_token");
-  
-  // Remove os dados do usuário
-  localStorage.removeItem("dc_usuario");
-  
-  // Redireciona para a página de login
+  AuthService.fazerLogout();
   window.location.href = "login.html";
 };
 
 /**
  * Inicializa a aplicação quando a página é carregada.
- * 
- * Aguarda o carregamento completo do DOM e então:
- * 1. Verifica se há um usuário autenticado
- * 2. Configura o botão de logout (se existir na página)
- * 3. Protege páginas que exigem autenticação
  */
 document.addEventListener("DOMContentLoaded", () => {
-  // Obtém referência ao botão de logout (pode não existir em todas as páginas)
-  const botaoLogout = document.querySelector("#logoutBtn");
+  // Protege rotas novamente (caso a primeira verificação não tenha funcionado)
+  if (!protegerRotas()) {
+    return; // Se não estiver autenticado, para a execução aqui
+  }
 
-  /**
-   * Configura o botão de logout se existir na página.
-   * 
-   * Quando o usuário clica no botão de logout:
-   * 1. Remove os dados de autenticação do localStorage
-   * 2. Redireciona para a página de login
-   */
-  if (botaoLogout) {
-    botaoLogout.addEventListener("click", () => {
+  // Configura botões de logout
+  const botoesLogout = document.querySelectorAll("#logoutBtn, .btn-logout, [data-logout]");
+  botoesLogout.forEach(botao => {
+    botao.addEventListener("click", (e) => {
+      e.preventDefault();
       fazerLogout();
     });
-  }
+  });
 
-  /**
-   * Protege páginas que exigem autenticação.
-   * 
-   * Se a página atual for o dashboard e o usuário não estiver autenticado,
-   * redireciona para a página de login.
-   */
-  if (window.location.pathname.includes("dashboard.html") && !estaAutenticado()) {
-    alert("Faça login para acessar o dashboard!");
-    window.location.href = "login.html";
-  }
+  // Atualiza links de login/logout no header baseado no estado de autenticação
+  const linksLogin = document.querySelectorAll('a.btn-login, nav a[href="login.html"]');
+  const usuario = AuthService.obterUsuario();
+  
+  linksLogin.forEach(link => {
+    if (usuario) {
+      // Se estiver logado, pode mudar para mostrar nome ou logout
+      link.textContent = usuario.nome || 'Perfil';
+      link.href = 'perfil.html';
+    }
+  });
 });

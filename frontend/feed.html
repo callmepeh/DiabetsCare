@@ -7,71 +7,64 @@
   <link rel="stylesheet" href="css/feedStyle.css">
 </head>
 <body>
-  <!-- Header -->
-  <header class="header">
-    <h1>DiabetesCare</h1>
-    <nav>
-      <a href="#" class="active">Início</a>
-      <a href="#">Perfil</a>
-      <a href="#">Configurações</a>
-      <a href="#" onclick="logout()">Sair</a>
-    </nav>
-  </header>
+
+<header class="header">
+  <div class="logo-area">
+    <img src="images/logo.png" alt="DiabetesCare Logo" class="logo">
+    <h1 class="logo-name">DiabetesCare</h1>
+  </div>
+
+  <nav>
+    <a href="index.html">Início</a>
+    <a href="feed.html">Feed</a>
+    <a href="post.html">Criar Post</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="perfil.html">Perfil</a>
+    <a href="login.html" class="btn-login">Login</a>
+  </nav>
+</header>
 
   <!-- Container principal -->
   <div class="container">
+
     <!-- Painel do feed -->
     <div class="feed-panel">
-      <!-- Cabeçalho do feed -->
+
+      <!-- Cabeçalho -->
       <div class="feed-header">
         <h1>Olá, Usuário!</h1>
-        <p>Confira as últimas atualizações e poste novidades sobre seu acompanhamento.</p>
+        <p>Confira as últimas atualizações e compartilhe sua jornada.</p>
       </div>
 
-      <!-- Área de criação de post -->
+      <!-- Criar post -->
       <div class="post-create">
         <textarea placeholder="Compartilhe algo com a comunidade..."></textarea>
         <button class="btn-publish">Publicar</button>
       </div>
 
       <!-- Lista de posts -->
-      <div class="posts-list">
-        <div class="post-card">
-          <div class="post-header">
-            <img src="img/user.png" alt="Avatar do usuário">
-            <div>
-              <h2>Maria Silva</h2>
-              <span>Há 2 horas</span>
-            </div>
-          </div>
-          <p class="post-text">Hoje consegui manter minha glicemia estável após a caminhada matinal!</p>
-        </div>
+      <div class="posts-list"></div>
 
-        <div class="post-card">
-          <div class="post-header">
-            <img src="img/user.png" alt="Avatar do usuário">
-            <div>
-              <h2>João Pedro</h2>
-              <span>Ontem</span>
-            </div>
-          </div>
-          <p class="post-text">Alguém tem dicas para controlar a ansiedade e não exagerar na alimentação?</p>
-        </div>
-      </div>
     </div>
 
     <!-- Painel decorativo / dicas -->
     <div class="welcome">
       <div class="textwelcome">
         <h1>Mantenha sua <span>saúde em dia</span></h1>
-        <p>Dicas, lembretes e suporte da comunidade para acompanhar seu diabetes.</p>
+        <p>Dicas e suporte da comunidade.</p>
       </div>
-      <img src="img/cadastro/img/Vector1.png" class="Vector1" alt="">
-      <img src="img/cadastro/img/Vector2.png" class="Vector2" alt="">
-      <img src="img/cadastro/img/Vector3.png" class="Vector3" alt="">
+
+      <img src="images/vector1.png" class="Vector1" alt="">
+      <img src="images/vector2.png" class="Vector2" alt="">
+      <img src="images/vector3.png" class="Vector3" alt="">
     </div>
+
   </div>
 
+  <!-- Scripts JavaScript -->
+  <script src="js/utils/storage.js"></script>
+  <script src="js/main.js"></script>
   <script src="js/feed/feed.js"></script>
+
 </body>
 </html>

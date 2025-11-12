@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard - DiabetesCare</title>
-  <link rel="stylesheet" href="css/dashboardStyle.css" />
+  <link rel="stylesheet" href="css\dashboardStyle.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-
 <body>
   <main class="recipiente-principal">
     <!-- Formas decorativas -->
@@ -20,9 +18,7 @@
       <!-- Cabeçalho -->
       <header class="cabecalho-dashboard">
         <h1>Seu Dashboard</h1>
-        <p>Acompanhe sua evolução diária da glicemia</p>
-        <p id="userName">Usuário</p> <!-- Nome do usuário logado -->
-        <button id="logoutBtn" class="botao-logout">Logout</button>
+        <p id="dashboard-subtitle">Acompanhe sua evolução diária da glicemia</p>
       </header>
 
       <!-- Relatório de médias -->
@@ -44,22 +40,6 @@
         </div>
       </section>
 
-      <!-- Tabela de registros -->
-      <section class="tabela-container">
-        <h2>Histórico de Glicemias</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Data</th>
-              <th>Valor (mg/dL)</th>
-            </tr>
-          </thead>
-          <tbody id="tabela-glicemia">
-            <!-- Os registros serão carregados aqui pelo dashboard.js -->
-          </tbody>
-        </table>
-      </section>
-
       <!-- Gráfico -->
       <section class="grafico-container">
         <h2>Gráfico de Evolução</h2>
@@ -68,32 +48,19 @@
 
       <!-- Botões -->
       <div class="acoes-dashboard">
-        <button class="botao-voltar" onclick="window.location.href='frontend/index.html'">
-          Voltar~
-
-          <div class="grafico">
-            <canvas id="graficoGlicemia" width="400" height="200"></canvas>
-          </div>
-          
+        <button class="botao-voltar" onclick="window.location.href='index.html'">
+          Voltar
         </button>
-        <button class="botao-novo" onclick="window.location.href='frontend/glicemia.html'">
+        <button class="botao-novo" onclick="window.location.href='glicemia.html'">
           Novo Registro
         </button>
       </div>
     </section>
   </main>
-  <div class="estatistica">
-    <p>Média últimos 3 dias: <span id="media"></span></p>
-    <p>Último registro: <span id="ultimo"></span></p>
-    <p>Total de registros: <span id="total"></span></p>
-  </div>
 
-
-
-  <!-- Script do dashboard -->
-  <script src="js/dashboard/dashboard.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+  <!-- Scripts JavaScript -->
+  <script src="js/utils/storage.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/dashboar/dashboard.js"></script>
 </body>
-
 </html>

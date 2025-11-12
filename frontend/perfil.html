@@ -1,50 +1,267 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil comum | DiabetsCare</title>
-    <link rel="stylesheet" href="css/perfilStyle.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Perfil | DiabetesCare</title>
+  <style>
+    :root{
+      --brand:#4c8bf5;
+      --muted:#6b7280;
+      --bg:#f4f7fb;
+      --card:#ffffff;
+      --glass: rgba(255,255,255,0.8);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background:var(--bg);
+      color:#222;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    /* Header comum */
+    .header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 26px;
+      background:var(--brand);
+      color:#fff;
+      box-shadow:0 3px 8px rgba(0,0,0,0.12);
+      position:sticky;
+      top:0;
+      z-index:10;
+    }
+    .header-left{display:flex;align-items:center;gap:14px}
+    .header-logo{width:48px;height:auto;border-radius:8px;background:#fff;padding:4px}
+    .header-title{font-size:24px;font-weight:700;margin:0}
+    nav a{color:white;text-decoration:none;margin-left:18px;font-weight:600}
+    nav a.btn-login{background:#fff;color:var(--brand);padding:6px 12px;border-radius:8px}
+
+    .page{
+      max-width:1100px;margin:28px auto;padding:0 18px;display:grid;grid-template-columns:340px 1fr;gap:28px;
+    }
+
+    /* Profile card */
+    .profile-card{
+      background:var(--card);
+      border-radius:14px;
+      padding:22px;
+      box-shadow:0 8px 20px rgba(12,20,40,0.06);
+      position:relative;
+    }
+
+    .cover{
+      height:86px;border-radius:10px;background:linear-gradient(90deg,var(--brand),#66a9ff);position:relative;margin:-22px -22px 16px -22px;
+    }
+
+    .avatar-wrap{display:flex;align-items:center;gap:14px;margin-bottom:8px}
+    .avatar{
+      width:90px;height:90px;border-radius:14px;border:4px solid #fff;object-fit:cover;background:#eee;
+    }
+    .user-info h2{margin:0;font-size:20px}
+    .user-info p{margin:6px 0 0 0;color:var(--muted);font-size:14px}
+
+    .bio{
+      margin-top:12px;color:#333;font-size:14px;line-height:1.45;padding-top:8px;border-top:1px dashed #eef3ff;
+    }
+
+    .stats{
+      display:flex;gap:12px;margin-top:16px;flex-wrap:wrap;
+    }
+    .stat{
+      flex:1 1 100%; display:flex;justify-content:space-between;align-items:center;padding:12px;border-radius:10px;background:#fbfdff;border:1px solid #eef3ff;
+    }
+    @media(min-width:520px){
+      .stat{flex:1 1 calc(50% - 6px)}
+    }
+    .stat h4{margin:0;font-size:13px;color:var(--muted)}
+    .stat strong{font-size:18px}
+
+    .actions{display:flex;gap:10px;margin-top:16px}
+    .btn{padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:700}
+    .btn-primary{background:var(--brand);color:white}
+    .btn-secondary{background:#eef3ff;color:var(--brand)}
+
+    /* Main content area (posts etc) */
+    .main-panel{
+      display:flex;flex-direction:column;gap:18px;
+    }
+
+    .section-card{
+      background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(12,20,40,0.04);
+    }
+    .section-card h3{margin:0 0 12px 0}
+
+    .recent-post{
+      display:flex;gap:12px;padding:12px;border-radius:10px;border:1px solid #f0f4fb;margin-bottom:10px;
+    }
+    .post-thumb{width:72px;height:56px;border-radius:8px;background:#f3f6ff;flex-shrink:0}
+    .post-body h4{margin:0;font-size:15px}
+    .post-body p{margin:6px 0 0;color:var(--muted);font-size:13px}
+
+    /* small helpers */
+    .muted{color:var(--muted);font-size:13px}
+  </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Cabeçalho azul com formas decorativas -->
-        <header class="header">
-            <div class="decorative-shapes">
-                <div class="shape shape-1"></div>
-                <div class="shape shape-2"></div>
-            </div>
-        </header>
-
-        <!-- Conteúdo principal -->
-        <main class="main-content">
-            <h1 class="user-name">Nome do usuário</h1>
-            
-            <!-- Área de bio -->
-            <div class="bio-section">
-                <textarea class="bio-textarea" placeholder="Bio"></textarea>
-            </div>
-
-            <!-- Seção de estatísticas -->
-            <div class="stats-section">
-                <div class="stat-item">
-                    <h3 class="stat-title">Em jejum</h3>
-                    <div class="stat-value stat-yellow">65</div>
-                </div>
-                <div class="stat-item">
-                    <h3 class="stat-title">Pós-prandial</h3>
-                    <div class="stat-value stat-green">90</div>
-                </div>
-                <div class="stat-item">
-                    <h3 class="stat-title">Hora de dormir</h3>
-                    <div class="stat-value stat-red">145</div>
-                </div>
-            </div>
-
-            <!-- Botão principal -->
-            <button class="primary-button">Consultar dashboard</button>
-        </main>
+  <!-- header padrão -->
+  <header class="header">
+    <div class="header-left">
+      <img src="img/logoDiabetesCare.png" class="header-logo" alt="logo">
+      <div>
+        <div class="header-title">DiabetesCare</div>
+      </div>
     </div>
-    <script src = "js/perfil/perfilComum.js"></script>
+
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="feed.html">Artigos</a>
+      <a href="perfil.html" style="text-decoration:underline">Perfil</a>
+      <a href="login.html" class="btn-login">Login</a>
+    </nav>
+  </header>
+
+  <div class="page">
+    <!-- coluna esquerda: perfil -->
+    <aside class="profile-card" id="profileCard">
+      <div class="cover" aria-hidden="true"></div>
+
+      <div class="avatar-wrap">
+        <img id="avatarImg" class="avatar" src="images/user1.png" alt="Foto do usuário">
+        <div class="user-info">
+          <h2 id="displayName">Nome do Usuário</h2>
+          <p id="smallMeta" class="muted">Tipo: — • Idade: —</p>
+        </div>
+      </div>
+
+      <div class="bio" id="bioText">Sem biografia. Clique em "Editar Perfil" para adicionar uma descrição sobre você, rotina e metas.</div>
+
+      <div class="stats" style="margin-top:14px">
+        <div class="stat">
+          <div>
+            <h4>Em jejum</h4>
+            <small class="muted">mg/dL</small>
+          </div>
+          <div><strong id="statFasting">—</strong></div>
+        </div>
+        <div class="stat">
+          <div>
+            <h4>Pós-prandial</h4>
+            <small class="muted">mg/dL</small>
+          </div>
+          <div><strong id="statPost">—</strong></div>
+        </div>
+        <div class="stat">
+          <div>
+            <h4>Hora de dormir</h4>
+            <small class="muted">mg/dL</small>
+          </div>
+          <div><strong id="statSleep">—</strong></div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn btn-primary" id="btnDashboard">Consultar dashboard</button>
+        <button class="btn btn-secondary" id="btnEdit">Editar perfil</button>
+      </div>
+    </aside>
+
+    <!-- coluna direita: conteúdo -->
+    <main class="main-panel">
+      <div class="section-card">
+        <h3>Atividade recente</h3>
+        <div id="recentPosts">
+          <div class="recent-post">
+            <div class="post-thumb"></div>
+            <div class="post-body">
+              <h4>Sem publicações ainda</h4>
+              <p class="muted">Quando você publicar artigos ou atualizações, eles aparecerão aqui.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <h3>Metas de acompanhamento</h3>
+        <p class="muted">Defina metas simples: ex. "Jejum < 100 mg/dL", "Exercício 3x/sem". Use o dashboard para monitorar progresso.</p>
+      </div>
+    </main>
+  </div>
+
+  <!-- Scripts JavaScript -->
+  <script src="js/utils/storage.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Aguarda o main.js proteger a rota
+    document.addEventListener("DOMContentLoaded", () => {
+      // Verificação adicional (main.js já fez, mas garantimos)
+      if (!AuthService.estaLogado()) {
+        return; // main.js já redirecionou
+      }
+
+      const usuario = AuthService.obterUsuario();
+      if (!usuario) {
+        alert("Erro ao carregar dados do usuário.");
+        window.location.href = "login.html";
+        return;
+      }
+
+      const $ = (id) => document.getElementById(id);
+
+      // Aplica dados do usuário
+      $('displayName').textContent = usuario.nome || 'Usuário';
+      $('bioText').textContent = usuario.bio || 'Sem biografia. Clique em "Editar Perfil" para adicionar uma descrição sobre você, rotina e metas.';
+      $('smallMeta').textContent = `Tipo: ${usuario.tipoConta === 'profissional' ? 'Profissional' : 'Comum'}`;
+
+      // Calcula estatísticas de glicemia
+      const registros = GlicemiaService.obterPorUsuario(usuario.id);
+      if (registros.length > 0) {
+        const ultimoRegistro = registros[registros.length - 1];
+        $('statFasting').textContent = ultimoRegistro.glicemiaJejum || '—';
+        $('statPost').textContent = ultimoRegistro.glicemiaPosPrandial || '—';
+        $('statSleep').textContent = ultimoRegistro.glicemiaAntesDormir || '—';
+      }
+
+      // Posts recentes do usuário
+      const posts = PostService.obterPorUsuario(usuario.id);
+      const recent = $('recentPosts');
+      if (posts.length > 0) {
+        recent.innerHTML = '';
+        posts.slice(0, 5).forEach(p => {
+          const div = document.createElement('div');
+          div.className = 'recent-post';
+          const titulo = p.title || stripHtml(p.content || '').slice(0, 70) + (p.content && p.content.length > 70 ? '…' : '');
+          div.innerHTML = `<div class="post-thumb"></div>
+            <div class="post-body">
+              <h4>${escapeHtml(titulo)}</h4>
+              <p class="muted">${new Date(p.createdAt).toLocaleDateString('pt-BR')}</p>
+            </div>`;
+          recent.appendChild(div);
+        });
+      }
+
+      function stripHtml(html) {
+        const tmp = document.createElement('div');
+        tmp.innerHTML = html;
+        return tmp.textContent || tmp.innerText || '';
+      }
+
+      function escapeHtml(s) {
+        return String(s).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+      }
+
+      // Botões
+      document.getElementById('btnEdit').addEventListener('click', () => {
+        const editPage = usuario.tipoConta === 'profissional' ? 'perfil_profissional_edit.html' : 'perfil_comum_edit.html';
+        window.location.href = editPage;
+      });
+      document.getElementById('btnDashboard').addEventListener('click', () => {
+        window.location.href = 'dashboard.html';
+      });
+    });
+  </script>
 </body>
 </html>
