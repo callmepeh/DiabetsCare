@@ -12,6 +12,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import authRoutes from "./routes/authRoutes.js";
+import cookieParser from "cookie-parser";
 
 // Carrega variáveis de ambiente do arquivo .env
 dotenv.config();
@@ -27,6 +28,9 @@ app.use(cors());
 
 // Middleware para processar requisições com corpo em formato JSON
 app.use(express.json());
+
+// Middleware para processar cookies
+app.use(cookieParser());
 
 // Configura as rotas de autenticação no caminho /auth
 app.use("/auth", authRoutes);

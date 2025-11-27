@@ -105,6 +105,7 @@
   <!-- Scripts JavaScript -->
   <script src="js/utils/storage.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/cookie-consent.js"></script>
   <script>
     // Verifica se está logado
     if (!AuthService.estaLogado()) {
@@ -171,5 +172,14 @@
       });
     }
   </script>
+  <!-- Banner de Consentimento de Cookies -->
+  <div id="cookie-consent-banner">
+    <p>
+      Utilizamos cookies para melhorar sua experiência, analisar o tráfego e personalizar o conteúdo. Ao clicar em "Aceitar", você concorda com o uso de cookies.
+      <a href="#" target="_blank">Saiba mais sobre nossa Política de Cookies.</a>
+    </p>
+    <button id="accept-cookies">Aceitar</button>
+  </div>
+
 </body>
 </html>

@@ -1,0 +1,47 @@
+/*
+ * Estilos para o Banner de Consentimento de Cookies
+ */
+
+#cookie-consent-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #333; /* Fundo escuro */
+    color: #fff; /* Texto claro */
+    padding: 15px 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    z-index: 1000; /* Garante que fique acima de outros elementos */
+    display: none; /* Inicialmente oculto, será exibido via JS */
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+}
+
+#cookie-consent-banner p {
+    margin: 0 0 10px 0;
+}
+
+#cookie-consent-banner button {
+    background-color: #007bff; /* Cor primária do Bootstrap */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#cookie-consent-banner button:hover {
+    background-color: #0056b3;
+}
+
+#cookie-consent-banner a {
+    color: #87cefa; /* Azul claro para links */
+    text-decoration: none;
+}
+
+#cookie-consent-banner a:hover {
+    text-decoration: underline;
+}
